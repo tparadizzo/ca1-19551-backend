@@ -9,9 +9,6 @@ const client = new MongoClient(url, {useUnifiedTopology: true});
 // Database used
 const dbName = "bikeapp";
 
-// const bodyParser = require('body-parser')
-// app.use(bodyParser.urlencoded({extended: false}))
-
 async function run(){
     try{
         await client.connect();
@@ -50,9 +47,6 @@ async function run(){
             "stock" : true
         }
 
-        // To check the objects in database in the console
-        // console.log(bike);
-
         // Add a new document in the database
         await collection.insertOne(bike1);
         await collection.insertOne(bike2);
@@ -60,10 +54,10 @@ async function run(){
         await collection.insertOne(bike4);
 
         // Delete a document from the database
-        const deletedBike = await collection.deleteOne(bike1);
-        const deletedBike = await collection.deleteOne(bike2);
-        const deletedBike = await collection.deleteOne(bike3);
-        const deletedBike = await collection.deleteOne(bike4);
+        await collection.deleteOne(bike1);
+        await collection.deleteOne(bike2);
+        await collection.deleteOne(bike3);
+        await collection.deleteOne(bike4);
 
         // Delete more than one item in the database
         await collection.deleteMany({color: "black"});
@@ -80,7 +74,8 @@ async function run(){
         await collection.updateOne(filter,updateDoc)
 
         // Find a object in the database
-        const foundBike = await collection.findOne({brand:"martello"})
+        const foundBike = await collection.findOne()
+        console.log(foundBike);
 
 
     } catch(err) {
