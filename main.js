@@ -60,7 +60,10 @@ async function run(){
         await collection.insertOne(bike4);
 
         // Delete a document from the database
-        const deletedBike = await collection.deleteOne(bike);
+        const deletedBike = await collection.deleteOne(bike1);
+        const deletedBike = await collection.deleteOne(bike2);
+        const deletedBike = await collection.deleteOne(bike3);
+        const deletedBike = await collection.deleteOne(bike4);
 
         // Delete more than one item in the database
         await collection.deleteMany({color: "black"});
